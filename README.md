@@ -1,1 +1,0 @@
-# potencia3ph
