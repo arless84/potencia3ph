@@ -26,7 +26,7 @@ $app->get('/', function() use($app) {
 
 $app->get('/fecha',function() use($app){
   $app['monolog']->addDebug('logging output.');
-  return date('Y-m-d H:mm:ss');
+  return date('Y-m-d H:i:s');
 });
 
 $app->run();
