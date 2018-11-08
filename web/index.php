@@ -29,4 +29,15 @@ $app->get('/fecha',function() use($app){
   return date('Y-m-d H:i:s');
 });
 
+$app->get('/guardar/{V1}', 
+	function($V1) use($app){
+	$dbconexion=pg_connect( "host=ec2-23-21-192-179.compute-1.amazonaws.com port=5432 dbname=d83082i66m502p user=auwnpcmayyfvrf password=9c4d61ed2d9d293b80902dbfe5611d7bde523f1ec69d9853b8e349df73b2161c");
+	$registro=array (
+		"fecha"=>date('Y-m-d H:i:s'),
+		"Voltaje1"=>$V1);
+	$resultado=pg_insert ($dbconexion,'Mediciones',$registro);
+	return date('Y-m-d H:i:s');
+
+	});
+
 $app->run();
