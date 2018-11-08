@@ -35,7 +35,7 @@ $app->get('/guardar/{V1}',
 	$registro=array (
 		"fecha"=>date('Y-m-d H:i:s'),
 		"Voltaje1"=>$V1);
-	$resultado=pg_insert ($dbconexion,'Mediciones',$registro);
+	$resultado=pg_insert ($dbconexion,'mediciones',$registro);
 	return date('Y-m-d H:i:s');
 
 	});
