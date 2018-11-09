@@ -1,7 +1,5 @@
 <?php
 
-date_default_timezone_set('America/Bogota');
-
 require('../vendor/autoload.php');
 
 $app = new Silex\Application();
@@ -23,42 +21,5 @@ $app->get('/', function() use($app) {
   $app['monolog']->addDebug('logging output.');
   return $app['twig']->render('index.twig');
 });
-
-$app->get('/fecha',function() use($app){
-  $app['monolog']->addDebug('logging output.');
-  return date('Y-m-d H:i:s');
-});
-
-
-
-$app->get('/guardar/{V1}', 
-	function($V1) use($app){
-		 $app['monolog']->addDebug('logging output.');
-	$dbconexion=pg_connect( "host=ec2-23-21-192-179.compute-1.amazonaws.com port=5432 dbname=d83082i66m502p user=auwnpcmayyfvrf password=9c4d61ed2d9d293b80902dbfe5611d7bde523f1ec69d9853b8e349df73b2161c");
-	$registro=array(
-		"Fecha"=>date('Y-m-d H:i:s'),
-		"Voltaje1"=>200,
-		"Voltaje2"=>null,
-		"Corriente1"=>null,
-		"Corriente2"=>null,
-		"Corriente3"=>null,
-		"Potencia1"=>null,
-		"Potencia2"=>null,
-		);
-	$resultado=pg_insert ($dbconexion,'Mediciones',$registro);
-	return $resultado;
-
-	});
-
-$app->get('/estado/{estado}', 
-	function($estado) use($app){
-	$dbconexion=pg_connect( "host=ec2-23-21-192-179.compute-1.amazonaws.com port=5432 dbname=d83082i66m502p user=auwnpcmayyfvrf password=9c4d61ed2d9d293b80902dbfe5611d7bde523f1ec69d9853b8e349df73b2161c");
-	$registro=array (
-		"Fecha"=>date('Y-m-d H:i:s'),
-		"Voltaje1"=>100);
-	$resultado=pg_insert ($dbconexion,'Mediciones',$registro);
-	return $resultado;
-	});
-
 
 $app->run();
