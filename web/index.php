@@ -36,7 +36,14 @@ $app->get('/guardar/{V1}',
 	$dbconexion=pg_connect( "host=ec2-23-21-192-179.compute-1.amazonaws.com port=5432 dbname=d83082i66m502p user=auwnpcmayyfvrf password=9c4d61ed2d9d293b80902dbfe5611d7bde523f1ec69d9853b8e349df73b2161c");
 	$registro=array (
 		"Fecha"=>date('Y-m-d H:i:s'),
-		"Voltaje1"=>200);
+		"Voltaje1"=>200,
+		"Voltaje2"=>null,
+		"Corriente1"=>null,
+		"Corriente2"=>null,
+		"Corriente3"=>null,
+		"Potencia1"=>null,
+		"Potencia2"=>null,
+		);
 	$resultado=pg_insert ($dbconexion,'Mediciones',$registro);
 	return $dbconexion;
 
