@@ -27,7 +27,7 @@ $app->get('/Mediciones/{V1}', function($V1) use($app){
 	$registro=array(
 		"Fecha"=>date('Y-m-d H:i:s'),
 		"Voltaje1"=>$V1);
-	$resultado=pg_insert ($dbconexion,'Mediciones',$registro);
+	$resultado=pg_insert ($dbconexion,"Mediciones",$registro);
 	return date('Y-m-d H:i:s');
 
 	});
