@@ -45,7 +45,7 @@ $app->get('/guardar/{V1}',
 		"Potencia2"=>null,
 		);
 	$resultado=pg_insert ($dbconexion,'Mediciones',$registro);
-	return $dbconexion;
+	return $resultado;
 
 	});
 
