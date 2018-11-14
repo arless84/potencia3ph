@@ -22,11 +22,17 @@ $app->get('/', function() use($app) {
   return $app['twig']->render('index.twig');
 });
 
-$app->get('/Mediciones/{V1}', function($V1) use($app){
+$app->get('/Mediciones/{V1/V2/I1/I2/I3/P1/P2}', function($V1;$V2;$I1;$I2;$I3;$P1;$P2) use($app){
 	$dbconexion=pg_connect("host=ec2-23-21-192-179.compute-1.amazonaws.com port=5432 dbname=d83082i66m502p user=auwnpcmayyfvrf password=9c4d61ed2d9d293b80902dbfe5611d7bde523f1ec69d9853b8e349df73b2161c");
 	$registro=array(
-		"Fecha"=>date('Y-m-d H:i:s'),
-		"Voltaje1"=>$V1);
+		"fecha"=>date('Y-m-d H:i:s'),
+		"voltaje_1"=>$V1);
+		"voltaje_2"=>$V2);
+	    "corriente_1"=>$I1);
+        "corriente_2"=>$I2);
+        "corriente_3"=>$I3);
+        "potencia_1"=>$P1);
+        "potencia_2"=>$P2);
 	$resultado=pg_insert ($dbconexion,'Mediciones',$registro);
 	return date('Y-m-d H:i:s');
 
