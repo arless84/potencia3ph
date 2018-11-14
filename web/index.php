@@ -38,7 +38,7 @@ $app->get('/Mediciones/{v1/v2/i1/i2/i3/p1/p2}', function($v1;$v2;$i1;$i2;$i3;$p1
 
 	});
 
-$app->get('/medicion_test/{v1}/{v2}/{i1}/{i2}/{i3}/{p1}/{p2}', function($v1;$v2;$i1;$i2;$i3;$p1;$p2) use($app){
+$app->get('/medicion_test/{v1}/{v2}/{i1}/{i2}/{i3}/{p1}/{p2}', function($v1,$v2,$i1,$i2,$i3,$p1,$p2) use($app){
 	$dbconexion=pg_connect( "host=ec2-23-21-192-179.compute-1.amazonaws.com port=5432 dbname=d83082i66m502p user=auwnpcmayyfvrf password=9c4d61ed2d9d293b80902dbfe5611d7bde523f1ec69d9853b8e349df73b2161c");
 	$registro=array(
 		"fecha"=>date('Y-m-d H:i:s'),
