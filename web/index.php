@@ -2,7 +2,7 @@
 
 require('../vendor/autoload.php');
 
-date_default_timezone_get('America/Bogota');
+date_default_timezone_set('America/Bogota');
 
 $app = new Silex\Application();
 $app['debug'] = true;
