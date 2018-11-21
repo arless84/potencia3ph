@@ -64,8 +64,8 @@ var amp_graph = Morris.Line({
   data: [],
   xkey: 'time',
   xLabels: 'minute',
-  ykeys: ['current'],
-  labels: ['Corriente']
+ ykeys: ['voltaje_1', 'voltaje_2'],
+  labels: ['voltaje_1', 'voltaje_2']
 });
 
 var element = {}, temps = [], hums = [], voltage = [], current = [], power=0, consumptions=[];
@@ -75,12 +75,8 @@ function newDataGraph() {
   $.getJSON("/getPotenciaData/1", function(result){
     obj = $.parseJSON(JSON.stringify(result));
     $.each(obj, function( iData, contentData ) {
-        element.time = contentData.fecha;
-        element.Voltaje_1 = contentData.voltaje_1;
-        element.Voltaje_2 = contentData.voltaje_2;
-        element.Voltaje_3 = contentData.voltaje_3;
   
-        current.push({ time: contentData.fecha, voltaje_1: contentData.voltaje_1, voltaje_1:contentData.voltaje_1});
+        current.push({ time: contentData.fecha, voltaje_1: contentData.voltaje_1, voltaje_2:contentData.voltaje_2});
     });
     amp_graph.setData(current);
   });
@@ -97,7 +93,7 @@ function initialDataGraph() {
         element.Voltaje_2 = contentData.voltaje_2;
         element.Voltaje_3 = contentData.voltaje_3;
   
-        current.push({ time: contentData.fecha, voltaje_1: contentData.voltaje_1, voltaje_1:contentData.voltaje_1});
+        current.push({ time: contentData.fecha, voltaje_1: contentData.voltaje_1, voltaje_2:contentData.voltaje_2});
     });
     amp_graph.setData(current);
   })};
