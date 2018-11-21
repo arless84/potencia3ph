@@ -82,10 +82,10 @@ function newDataGraph() {
   });
 }
 
-setInterval(newDataGraph, 30000);
+setInterval(newDataGraph, 1000);
 
 function initialDataGraph() {
-  $.getJSON("/getPotenciaData/1", function(result){
+  $.getJSON("/getPotenciaData/3", function(result){
     obj = $.parseJSON(JSON.stringify(result));
     $.each(obj, function( iData, contentData ) {
         element.time = contentData.fecha;
