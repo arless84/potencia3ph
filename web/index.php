@@ -6,6 +6,9 @@ require('../vendor/autoload.php');
 
 date_default_timezone_set('America/Bogota');
 
+use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Response;
+
 $app = new Silex\Application();
 $app['debug'] = true;
 
@@ -56,7 +59,7 @@ $app->get('/getPotenciaData/{numberOfRecords}', function($numberOfRecords) use($
   $app['monolog']->addDebug('logging output.');
 
   $dbconn = pg_connect( "host=ec2-23-21-192-179.compute-1.amazonaws.com port=5432 dbname=d83082i66m502p user=auwnpcmayyfvrf password=9c4d61ed2d9d293b80902dbfe5611d7bde523f1ec69d9853b8e349df73b2161c");
-	$consult_db = pg_query($dbconn, 'SELECT * FROM public."medicion_test" ORDER BY "fecha" DESC LIMIT ' . $numberOfRecords .'');
+  $consult_db = pg_query($dbconn, 'SELECT * FROM public."medicion_test" ORDER BY "fecha" DESC LIMIT ' . $numberOfRecords .'');
   
   $resultArray = array();
   while ($row = pg_fetch_array($consult_db, null, PGSQL_ASSOC)) {
