@@ -56,7 +56,7 @@ $app->get('/getPotenciaData/{numberOfRecords}', function($numberOfRecords) use($
   $app['monolog']->addDebug('logging output.');
 
   $dbconn = pg_connect("host=ec2-54-227-240-164.compute-1.amazonaws.com port=5432 dbname=dcih5dumii01nc user=rrshastczyoqvd password=luSi_URsXUuXQrsd8fZB3yM-4G");
-  $consult_db = pg_query($dbconn, 'SELECT * FROM medicion_test ORDER BY "fecha" DESC LIMIT ' . $numberOfRecords .'');
+  $consult_db = pg_query($dbconn, 'SELECT * FROM public."medicion_test" ORDER BY "fecha" DESC LIMIT ' . $numberOfRecords .'');
   
   $resultArray = array();
   while ($row = pg_fetch_array($consult_db, null, PGSQL_ASSOC)) {
